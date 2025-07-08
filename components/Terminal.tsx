@@ -30,12 +30,12 @@ const Terminal = () => {
   const codeLines: CodeLines = useMemo(
     () => ({
       python: [
-        'print("Hello! 👋 I am Jason Lee Kian Seng")',
+        'print("Hello! 👋 I am Dahn Tran")',
         'print("Located in Singapore")',
         'print("I’m an AI-driven full-stack developer with over 8 years of experience in Python and JavaScript, specializing in machine learning, intelligent web applications, and high-performance video streaming solutions.")',
       ],
       javascript: [
-        'console.log("Hello! 👋 I am Jason Lee Kian Seng");',
+        'console.log("Hello! 👋 I am Dahn Tran");',
         'console.log("Located in Singapore");',
         'console.log("I’m an AI-driven full-stack developer with over 8 years of experience in Python and JavaScript, specializing in machine learning, intelligent web applications, and high-performance video streaming solutions.");',
       ],
@@ -98,6 +98,7 @@ const Terminal = () => {
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="bg-card text-card-foreground rounded-lg p-6 mb-8 shadow-lg relative overflow-hidden"
+      style={{ minHeight: 260 }}
     >
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5"
@@ -148,7 +149,7 @@ const Terminal = () => {
           transition={{ delay: 1, duration: 0.4 }}
         >
           <RiTerminalBoxFill className="text-primary mr-2" />
-          <span className="text-primary">jasonlee@portfolio:~$</span>
+          <span className="text-primary">dahntran@portfolio:~$</span>
           <span className="text-secondary ml-2">&gt;&gt;</span>
           <span className="text-muted-foreground">{activeTab}</span>
         </motion.div>

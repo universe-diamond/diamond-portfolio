@@ -54,7 +54,7 @@ export const FloatingNav = ({
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <span className="text-primary">jasonlee</span>
+            <span className="text-primary">dahntran</span>
             <span className="text-foreground">.portfolio</span>
           </motion.span>
         </Link>

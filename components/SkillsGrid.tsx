@@ -1,5 +1,5 @@
 // components/SkillsGrid.tsx
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   FaPython,
@@ -15,7 +15,6 @@ import {
   FaVideo,
   FaStream,
   FaAws,
-  FaChalkboardTeacher,
   FaChartBar,
   FaHtml5,
   FaCss3Alt,
@@ -24,6 +23,8 @@ import {
   FaGitAlt,
   FaServer,
   FaNetworkWired,
+  FaChevronUp,
+  FaChevronDown,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -40,10 +41,10 @@ import {
   SiVercel,
   SiWebrtc,
   SiFfmpeg,
+  SiGraphql,
 } from "react-icons/si";
 
 const SkillsGrid = () => {
-  const [expanded, setExpanded] = useState(false);
   const skills = useMemo(
     () => [
       { icon: <FaBrain />, name: "AI/ML" },
@@ -81,12 +82,33 @@ const SkillsGrid = () => {
       { icon: <SiWebrtc />, name: "WebRTC" },
       { icon: <SiFfmpeg />, name: "FFmpeg" },
       { icon: <SiVercel />, name: "Vercel" },
+      { icon: <SiGraphql />, name: "GraphQL" },
     ],
     []
   );
 
-  // Show 8 skills (2 lines of 4) if not expanded
-  const visibleSkills = expanded ? skills : skills.slice(0, 8);
+  const skillsPerRow = 4;
+  const rowsPerSlide = 3;
+  const skillsPerSlide = skillsPerRow * rowsPerSlide;
+  const totalSlides = Math.ceil(skills.length / skillsPerSlide);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const startIdx = currentSlide * skillsPerSlide;
+  const endIdx = startIdx + skillsPerSlide;
+  const visibleSkills = skills.slice(startIdx, endIdx);
+
+  const handlePrev = () => setCurrentSlide((prev) => Math.max(prev - 1, 0));
+  const handleNext = () =>
+    setCurrentSlide((prev) => Math.min(prev + 1, totalSlides - 1));
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isHovered, totalSlides]);
 
   const skillVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -102,7 +124,19 @@ const SkillsGrid = () => {
   };
 
   return (
-    <>
+    <div
+      className="flex flex-col items-center mb-6"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <button
+        onClick={handlePrev}
+        disabled={currentSlide === 0}
+        className="mb-2 p-2 rounded-full bg-card text-primary disabled:opacity-40"
+        aria-label="Previous"
+      >
+        <FaChevronUp />
+      </button>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -126,27 +160,18 @@ const SkillsGrid = () => {
           </motion.div>
         ))}
       </motion.div>
-      {!expanded && skills.length > 8 && (
-        <div className="flex justify-center mb-6">
-          <button
-            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary/80 transition-colors"
-            onClick={() => setExpanded(true)}
-          >
-            Read more
-          </button>
-        </div>
-      )}
-      {expanded && skills.length > 8 && (
-        <div className="flex justify-center mt-2 mb-6">
-          <button
-            className="px-4 py-2 bg-muted text-foreground rounded hover:bg-muted/80 transition-colors"
-            onClick={() => setExpanded(false)}
-          >
-            Show less
-          </button>
-        </div>
-      )}
-    </>
+      <button
+        onClick={handleNext}
+        disabled={currentSlide === totalSlides - 1}
+        className="p-2 rounded-full bg-card text-primary disabled:opacity-40"
+        aria-label="Next"
+      >
+        <FaChevronDown />
+      </button>
+      <div className="mt-2 text-xs text-muted-foreground">
+        Slide {currentSlide + 1} of {totalSlides}
+      </div>
+    </div>
   );
 };
 

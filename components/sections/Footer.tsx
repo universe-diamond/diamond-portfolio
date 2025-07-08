@@ -2,20 +2,14 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaTwitter,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
 const Footer: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/diamond-it-615" },
+    { icon: FaGithub, href: "https://github.com/universe-diamond" },
     { icon: FaEnvelope, href: "mailto:devstar0428@gmail.com" },
   ];
 
@@ -52,7 +46,7 @@ const Footer: React.FC = () => {
         >
           <p className="text-lg font-mono">
             Designed & Built by
-            <span className="text-primary font-bold"> jasonlee </span>
+            <span className="text-primary font-bold"> dahntran </span>
             <span className="animate-pulse inline-block">🚀</span>
           </p>
           <p className="mt-2 text-sm">

@@ -10,8 +10,8 @@ import Footer from "@/components/sections/Footer";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
-  title: "Jason Lee",
-  description: "Personal portfolio of Jason Lee",
+  title: "Dahn Tran",
+  description: "Personal portfolio of Dahn Tran",
 };
 
 const navItems = [
@@ -51,21 +51,21 @@ export default function RootLayout({
           sizes="32x32"
           href="./favicon-32x32.png"
         />
-        <meta property="og:title" content="Jason Lee's Portfolio" />
+        <meta property="og:title" content="Dahn Tran's Portfolio" />
         <meta
           property="og:description"
           content="Data analyst with a passion for web development and machine learning. Transforming complex data into actionable insights and building innovative web solutions."
         />
-        <meta property="og:url" content="https://jasonlee.dev" />
+        <meta property="og:url" content="https://dahntran.dev" />
         <meta
           property="og:image"
-          content="https://jasonlee.dev/pics/web_screenshot.png"
+          content="https://dahntran.dev/pics/web_screenshot.png"
         />
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            if (window.location.href === "https://github.com/diamond-it-615/portfolio") {
-              window.location.replace("https://www.jasonlee.dev");
+            if (window.location.href === "https://github.com/universe-diamond/portfolio") {
+              window.location.replace("https://www.dahntran.dev");
             }
           `,
           }}

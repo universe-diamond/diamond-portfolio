@@ -3,16 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import StyledPic from "../Styledpic";
-import {
-  FaLightbulb,
-  FaCode,
-  FaPizzaSlice,
-  FaHiking,
-  FaPuzzlePiece,
-  FaChalkboardTeacher,
-} from "react-icons/fa";
+import { FaLightbulb } from "react-icons/fa";
 import { useScrollSection } from "@/hooks/use-scroll-section";
-import { CardSpotlight } from "../ui/card-spotlight";
 
 const AboutMe: React.FC = () => {
   const { ref, isVisible } = useScrollSection();
@@ -39,33 +31,33 @@ const AboutMe: React.FC = () => {
             <p>
               🚀 I’m a passionate and results-driven full-stack developer with
               over 8 years of experience delivering modern, scalable software
-              solutions. My expertise spans across artificial intelligence (AI)
-              🤖, full-stack web development 🌐, and advanced video streaming
-              technologies 🎥 — allowing me to contribute to a wide range of
+              solutions. My expertise spans across artificial intelligence (AI),
+              full-stack web development, and advanced video streaming
+              technologies — allowing me to contribute to a wide range of
               projects, from intelligent automation systems to real-time media
               platforms.
             </p>
             <p>
-              💻 I specialize in Python and JavaScript (Vue.js, Node.js), and
-              have hands-on experience with machine learning, deep learning, and
-              data analytics 📊. I’ve used tools such as TensorFlow, OpenCV, and
+              I specialize in Python and JavaScript (Vue.js, Node.js), and have
+              hands-on experience with machine learning, deep learning, and data
+              analytics. I’ve used tools such as TensorFlow, OpenCV, and
               scikit-learn to build smart, adaptive applications tailored to
               solve real-world problems.
             </p>
             <p>
-              🧱 On the web side, I’ve developed full-stack systems using REST
+              On the web side, I’ve developed full-stack systems using REST
               APIs, responsive front-end frameworks, and cloud-based deployment
-              pipelines ☁️. I also bring deep experience in real-time video
+              pipelines. I also bring deep experience in real-time video
               technologies like WebRTC, FFmpeg, RTMP, and HLS, enabling the
               creation of efficient, interactive, and scalable streaming
               platforms.
             </p>
             <p>
-              🧠 I thrive on solving complex challenges, improving performance
-              ⚙️, and writing clean, maintainable code. Whether working
-              independently or collaborating with cross-functional teams 🤝, I
-              bring clear communication, adaptability, and a strong commitment
-              to building impactful, user-centered technology.
+              I thrive on solving complex challenges, improving performance, and
+              writing clean, maintainable code. Whether working independently or
+              collaborating with cross-functional teams 🤝, I bring clear
+              communication, adaptability, and a strong commitment to building
+              impactful, user-centered technology.
             </p>
           </CardContent>
         </Card>

@@ -1,18 +1,5 @@
 // data/projects.ts
-import {
-  FaReact,
-  FaNodeJs,
-  FaPython,
-  FaDatabase,
-  FaLinkedin,
-  FaSyncAlt,
-} from "react-icons/fa";
-import {
-  SiTypescript,
-  SiMongodb,
-  SiTensorflow,
-  SiPostgresql,
-} from "react-icons/si";
+import { FaReact, FaNodeJs, FaPython } from "react-icons/fa";
 
 export interface Skill {
   name: string;
@@ -31,9 +18,9 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Next.js Portfolio Website",
+    title: "TaskFlow - Project Management App",
     description:
-      "A single-page application portfolio website built using Next.js, TailwindCSS, and shadcn/ui components.",
+      "A collaborative project management tool for teams, featuring task boards, real-time updates, user roles, and analytics.",
     icon: FaReact,
     technologies: [
       "Next.js",
@@ -41,58 +28,55 @@ export const projects: Project[] = [
       "TypeScript",
       "TailwindCSS",
       "shadcn/ui",
+      "Socket.io",
+      "Chart.js",
     ],
-    githubLink: "https://github.com/diamond-it-615/portfolio",
+    githubLink: "https://github.com/universe-diamond",
     skills: [
       { name: "Frontend Development" },
+      { name: "Real-Time Collaboration" },
       { name: "UI/UX Design" },
-      { name: "Responsive Web Design" },
-      { name: "Performance Optimization" },
+      { name: "State Management" },
+      { name: "Data Visualization" },
     ],
   },
   {
     id: 2,
-    title: "LinkedIn Job Search Automation",
+    title: "AI Resume Analyzer",
     description:
-      "A comprehensive project that automates LinkedIn job searches, scrapes job details, analyzes job descriptions using GPT, and generates tailored resumes and cover letters.",
-    icon: FaLinkedin,
-    technologies: [
-      "Python",
-      "Selenium",
-      "BeautifulSoup",
-      "pandas",
-      "GPT",
-      "DocX",
-    ],
-    githubLink: "https://github.com/diamond-it-615/resume",
+      "A machine learning-powered application that analyzes job descriptions and resumes using GPT and TensorFlow, providing tailored feedback and suggestions for improvement.",
+    icon: FaPython,
+    technologies: ["Python", "TensorFlow", "GPT", "pandas", "scikit-learn"],
+    githubLink: "https://github.com/universe-diamond",
     skills: [
-      { name: "Web Scraping" },
-      { name: "Data Analysis" },
-      { name: "Automation" },
       { name: "Machine Learning" },
-      { name: "Document Generation" },
+      { name: "Natural Language Processing" },
+      { name: "Data Analysis" },
+      { name: "AI Integration" },
     ],
   },
   {
-    id: 2,
-    title: "TickTick-Notion Two-Way Sync",
+    id: 3,
+    title: "Streamify - Video Streaming Platform",
     description:
-      "A Python-based application that enables two-way synchronization between TickTick tasks and Notion databases, allowing seamless task management across both platforms.",
-    icon: FaSyncAlt,
+      "A full-stack video streaming platform built with Node.js, Express, React, and MongoDB, supporting real-time video playback, user authentication, and scalable content delivery.",
+    icon: FaNodeJs,
     technologies: [
-      "Python",
-      "TickTick API",
-      "Notion API",
-      "aiohttp",
-      "asyncio",
+      "Node.js",
+      "Express",
+      "React",
+      "MongoDB",
+      "TypeScript",
+      "Socket.io",
+      "Video.js",
     ],
-    githubLink: "https://github.com/diamond-it-615/TicktickNotionTwoWaySync",
+    githubLink: "https://github.com/universe-diamond",
     skills: [
-      { name: "API Integration" },
-      { name: "Asynchronous Programming" },
-      { name: "Data Synchronization" },
-      { name: "Python Development" },
-      { name: "Task Automation" },
+      { name: "Full-Stack Development" },
+      { name: "Video Streaming" },
+      { name: "Real-Time Communication" },
+      { name: "Database Design" },
+      { name: "Authentication" },
     ],
   },
 ];

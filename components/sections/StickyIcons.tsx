@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { FaGithub, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
@@ -15,10 +15,10 @@ const StickyIcons: React.FC = () => {
   const isLargeScreen = useMediaQuery("(min-width: 768px)");
 
   const socialLinks: IconLinkProps[] = [
-    { icon: FaGithub, href: "https://github.com/diamond-it-615" },
-    { icon: FaLinkedin, href: "https://www.linkedin.com/in/diamond-it-615" },
-    { icon: FaInstagram, href: "https://www.instagram.com/diamond-it-615" },
-    { icon: FaTwitter, href: "https://x.com/diamond-it-615" },
+    { icon: FaGithub, href: "https://github.com/universe-diamond" },
+    // { icon: FaLinkedin, href: "https://www.linkedin.com/in/universe-diamond" },
+    // { icon: FaInstagram, href: "https://www.instagram.com/universe-diamond" },
+    // { icon: FaTwitter, href: "https://x.com/universe-diamond" },
   ];
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const StickyIcons: React.FC = () => {
     <>
       <div className="fixed left-4 bottom-0 z-50 flex flex-col items-center">
         <motion.div
-          className="flex flex-col gap-4 mt-4 pb-2"
+          className="flex flex-col gap-4 mt-4 pb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={contentControls}
         >
