@@ -49,7 +49,7 @@ export default function RootLayout({
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="./favicon-32x32.png"
+          href="./favicon-x32.png"
         />
         <meta property="og:title" content="Dahn Tran's Portfolio" />
         <meta
