@@ -125,52 +125,53 @@ const SkillsGrid = () => {
 
   return (
     <div
-      className="flex flex-col items-center mb-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <button
-        onClick={handlePrev}
-        disabled={currentSlide === 0}
-        className="mb-2 p-2 rounded-full bg-card text-primary disabled:opacity-40"
-        aria-label="Previous"
-      >
-        <FaChevronUp />
-      </button>
       <motion.div
+        className="flex flex-col items-center mb-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="grid grid-cols-4 gap-2 sm:gap-4 mb-8 -mx-2 sm:mx-0"
       >
-        {visibleSkills.map((skill, index) => (
-          <motion.div
-            key={skill.name}
-            custom={index}
-            variants={skillVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-            className="bg-card text-card-foreground rounded-lg p-2 sm:p-3 text-center flex flex-col items-center justify-center"
-          >
-            <div className="text-2xl sm:text-3xl mb-1 text-primary">
-              {skill.icon}
-            </div>
-            <p className="text-xs sm:text-sm font-medium">{skill.name}</p>
-          </motion.div>
-        ))}
+        <button
+          onClick={handlePrev}
+          disabled={currentSlide === 0}
+          className="mb-2 p-2 rounded-full bg-card text-primary disabled:opacity-40"
+          aria-label="Previous"
+        >
+          <FaChevronUp />
+        </button>
+        <div className="grid grid-cols-4 gap-2 sm:gap-4 mb-8 -mx-2 sm:mx-0">
+          {visibleSkills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              custom={index}
+              variants={skillVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              className="bg-card text-card-foreground rounded-lg p-2 sm:p-3 text-center flex flex-col items-center justify-center"
+            >
+              <div className="text-2xl sm:text-3xl mb-1 text-primary">
+                {skill.icon}
+              </div>
+              <p className="text-xs sm:text-sm font-medium">{skill.name}</p>
+            </motion.div>
+          ))}
+        </div>
+        <button
+          onClick={handleNext}
+          disabled={currentSlide === totalSlides - 1}
+          className="p-2 rounded-full bg-card text-primary disabled:opacity-40"
+          aria-label="Next"
+        >
+          <FaChevronDown />
+        </button>
+        <div className="mt-2 text-xs text-muted-foreground">
+          Slide {currentSlide + 1} of {totalSlides}
+        </div>
       </motion.div>
-      <button
-        onClick={handleNext}
-        disabled={currentSlide === totalSlides - 1}
-        className="p-2 rounded-full bg-card text-primary disabled:opacity-40"
-        aria-label="Next"
-      >
-        <FaChevronDown />
-      </button>
-      <div className="mt-2 text-xs text-muted-foreground">
-        Slide {currentSlide + 1} of {totalSlides}
-      </div>
     </div>
   );
 };

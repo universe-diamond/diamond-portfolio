@@ -8,7 +8,10 @@ const HeroTitle = () => (
     transition={{ duration: 0.8 }}
     className="text-center mb-8"
   >
-    <h1 className="text-4xl md:text-6xl font-bold mb-4 text-primary">
+    <h1
+      className="text-4xl md:text-6xl font-bold mb-4 text-primary"
+      style={{ marginTop: 64 }}
+    >
       Dahn Tran
     </h1>
     <h2 className="text-xl md:text-2xl text-foreground">Software Developer</h2>

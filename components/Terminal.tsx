@@ -31,12 +31,12 @@ const Terminal = () => {
     () => ({
       python: [
         'print("Hello! 👋 I am Dahn Tran")',
-        'print("Located in Singapore")',
+        'print("Located in Vietnam")',
         'print("I’m an AI-driven full-stack developer with over 8 years of experience in Python and JavaScript, specializing in machine learning, intelligent web applications, and high-performance video streaming solutions.")',
       ],
       javascript: [
         'console.log("Hello! 👋 I am Dahn Tran");',
-        'console.log("Located in Singapore");',
+        'console.log("Located in Vietnam");',
         'console.log("I’m an AI-driven full-stack developer with over 8 years of experience in Python and JavaScript, specializing in machine learning, intelligent web applications, and high-performance video streaming solutions.");',
       ],
     }),
