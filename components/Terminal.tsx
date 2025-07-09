@@ -8,43 +8,58 @@ interface CodeLines {
 }
 
 const Terminal = () => {
-  const [activeTab, setActiveTab] = useState<"python" | "javascript">("python");
+  const [activeTab, setActiveTab] = useState<"python" | "javascript" | "cpp">(
+    "python"
+  );
   const [typedLines, setTypedLines] = useState<{ [key: string]: string[] }>({
     python: ["", "", ""],
     javascript: ["", "", ""],
+    cpp: ["", "", ""],
   });
   const [currentLine, setCurrentLine] = useState<{ [key: string]: number }>({
     python: 0,
     javascript: 0,
+    cpp: 0,
   });
   const [currentChar, setCurrentChar] = useState<{ [key: string]: number }>({
     python: 0,
     javascript: 0,
+    cpp: 0,
   });
   const [isTyping, setIsTyping] = useState<{ [key: string]: boolean }>({
     python: false,
     javascript: false,
+    cpp: false,
   });
   const { ref, isVisible } = useScrollSection();
+
+  const title =
+    "I’m an AI-driven full-stack developer with over 8 years of experience in Python, JavaScript and C/C++, " +
+    "specializing in machine learning, intelligent web applications, and high-performance video streaming solution 🔥.";
 
   const codeLines: CodeLines = useMemo(
     () => ({
       python: [
         'print("Hello! 👋 I am Dahn Tran")',
         'print("Located in Vietnam")',
-        'print("I’m an AI-driven full-stack developer with over 8 years of experience in Python and JavaScript, specializing in machine learning, intelligent web applications, and high-performance video streaming solutions.")',
+        'print("' + title + '")',
       ],
       javascript: [
         'console.log("Hello! 👋 I am Dahn Tran");',
         'console.log("Located in Vietnam");',
-        'console.log("I’m an AI-driven full-stack developer with over 8 years of experience in Python and JavaScript, specializing in machine learning, intelligent web applications, and high-performance video streaming solutions.");',
+        'console.log("' + title + '");',
+      ],
+      cpp: [
+        'cout << "Hello! 👋 I am Dahn Tran";',
+        'cout << "Located in Vietnam";',
+        'cout << "' + title + '";',
       ],
     }),
     []
   );
 
   const typeLine = useCallback(
-    async (language: "python" | "javascript") => {
+    async (language: "python" | "javascript" | "cpp") => {
       const line = codeLines[language][currentLine[language]];
       if (currentChar[language] <= line.length) {
         setTypedLines((prev) => ({
@@ -74,7 +89,7 @@ const Terminal = () => {
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
-        setIsTyping({ python: true, javascript: true });
+        setIsTyping({ python: true, javascript: true, cpp: true });
       }, 500);
       return () => clearTimeout(timer);
     }
@@ -87,7 +102,7 @@ const Terminal = () => {
     }
   }, [activeTab, isTyping, typeLine]);
 
-  const handleTabChange = (tab: "python" | "javascript") => {
+  const handleTabChange = (tab: "python" | "javascript" | "cpp") => {
     setActiveTab(tab);
   };
 
@@ -125,7 +140,7 @@ const Terminal = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.4 }}
         >
-          {["python", "javascript"].map((lang, index) => (
+          {["python", "javascript", "cpp"].map((lang, index) => (
             <motion.button
               key={lang}
               className={`mr-2 px-3 py-1 rounded-t-lg ${
@@ -133,12 +148,16 @@ const Terminal = () => {
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary text-secondary-foreground"
               }`}
-              onClick={() => handleTabChange(lang as "python" | "javascript")}
+              onClick={() =>
+                handleTabChange(lang as "python" | "javascript" | "cpp")
+              }
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + index * 0.1, duration: 0.4 }}
             >
-              {lang.charAt(0).toUpperCase() + lang.slice(1)}
+              {lang === "cpp"
+                ? "C/C++"
+                : lang.charAt(0).toUpperCase() + lang.slice(1)}
             </motion.button>
           ))}
         </motion.div>
@@ -158,12 +177,12 @@ const Terminal = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.4 }}
         >
-          {["python", "javascript"].map((lang) => (
+          {["python", "javascript", "cpp"].map((lang) => (
             <div
               key={lang}
               style={{ display: activeTab === lang ? "block" : "none" }}
             >
-              {typedLines[lang as "python" | "javascript"].map(
+              {typedLines[lang as "python" | "javascript" | "cpp"].map(
                 (line, index) => (
                   <motion.div
                     key={index}
@@ -178,10 +197,15 @@ const Terminal = () => {
                   >
                     <span className="text-secondary mr-2">&gt;&gt;</span>
                     <span className="text-muted-foreground">
-                      {line.slice(0, lang === "python" ? 6 : 12)}
+                      {line.slice(
+                        0,
+                        lang === "python" ? 6 : lang === "javascript" ? 12 : 8
+                      )}
                     </span>
                     <span className="text-primary">
-                      {line.slice(lang === "python" ? 6 : 12)}
+                      {line.slice(
+                        lang === "python" ? 6 : lang === "javascript" ? 12 : 8
+                      )}
                     </span>
                     {index === currentLine[lang] && isTyping[lang] && (
                       <span className="animate-blink">|</span>
